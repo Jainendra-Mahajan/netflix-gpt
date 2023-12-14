@@ -1,6 +1,29 @@
+import { useRef, useState } from "react";
 import Header from "./Header";
+import { validateData } from "../utils/validate";
 
 const Login = () => {
+
+    const [isSignIn, setIsSignIn] = useState(true);
+    const [errorMessage , setErrorMessage] = useState(null);
+    const email = useRef();
+    const password = useRef();
+    const name = useRef();
+
+    const handleSignInToggle = () => {
+        setIsSignIn(!isSignIn);
+    }
+
+    const handleButtonClick = () => {
+
+        let message = "";
+        //ref will return the reference of the text under current.
+         name !== null ? message = validateData(email.current.value , password.current.value, name.current.value) : 
+                        validateData(email.current.value , password.current.value, null);
+
+        setErrorMessage(message);
+    }
+
     return (
         <div>
             <Header />
@@ -10,21 +33,40 @@ const Login = () => {
                 alt="BG Image" />
             </div>
 
-            <form className="absolute p-12 bg-black text-white w-3/12 my-36 mx-auto right-0 left-0 py-24 rounded-lg opacity-80">
-                <h1 className="text-3xl py-2">Sign In</h1>
+            <form onSubmit={(e) => e.preventDefault()} 
+                className="absolute p-12 bg-black text-white w-3/12 my-36 mx-auto right-0 left-0  rounded-lg opacity-85">
+                <h1 className="text-3xl py-2">
+                    {isSignIn ? "Sign In" : "Sign Up"}
+                </h1>
+
+                {!isSignIn && <input ref={name}
+                className="my-3 p-2 w-full rounded-sm bg-gray-900"
+                type="text"
+                placeholder="Name"/>}
+
                 <input
-                className="my-4 p-2 w-full rounded-sm bg-gray-700"
+                ref={email}
+                className="my-3 p-2 w-full rounded-sm bg-gray-900"
                 type="email"
-                placeholder="Enter Email Address"/>
+                placeholder="Email or phone number"/>
 
                 <input 
-                className="my-4 p-2 w-full rounded-sm bg-gray-700"
+                ref={password}
+                className="my-3 p-2 w-full rounded-sm bg-gray-900"
                 type="password"
                 placeholder="Password"/>
 
-                <button className="bg-red-500 p-3 w-full my-6 rounded-sm">
-                    Sign In
+                <button className="bg-red-600 p-2 w-full my-6 rounded-sm" onClick={handleButtonClick}>
+                    {isSignIn ? "Login" : "Sign Up"}
                 </button>
+
+                <p className="text-sm font-bold text-red-600">{errorMessage}</p>
+
+                <p className="py-2 text-sm cursor-pointer" onClick={handleSignInToggle}>
+                    {isSignIn ? "New to Netflix? Sign Up Now!" : 
+                                "Already registered? Sign In Now."}
+                </p>
+                
             </form>
 
         </div>
