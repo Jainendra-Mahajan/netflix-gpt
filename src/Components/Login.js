@@ -1,9 +1,13 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { validateData } from "../utils/validate";
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../utils/firebase"
+import { useNavigate } from "react-router";
 
 const Login = () => {
 
+    const navigate = useNavigate();
     const [isSignIn, setIsSignIn] = useState(true);
     const [errorMessage , setErrorMessage] = useState(null);
     const email = useRef();
@@ -18,10 +22,46 @@ const Login = () => {
 
         let message = "";
         //ref will return the reference of the text under current.
-         name !== null ? message = validateData(email.current.value , password.current.value, name.current.value) : 
-                        validateData(email.current.value , password.current.value, null);
+         {!isSignIn ? message = validateData(email.current.value , password.current.value, name.current.value) : 
+                        validateData(email.current.value , password.current.value, null)};
 
         setErrorMessage(message);
+        if(message) return;
+
+        if(!isSignIn){
+            //sign Up
+            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                
+                console.log(user);
+                navigate("/browse"); //If signUp is success navigate to browse
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                
+                setErrorMessage(errorCode + " " + errorMessage);
+            });
+        }
+
+        else {
+            //sign in
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user);
+                navigate("/browse") //If signIn is success navigate to browse
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrorMessage(errorCode + ":" + errorMessage);
+            });
+            }
+
     }
 
     return (
