@@ -23,14 +23,12 @@ const Body = () => {
     ])
 
     useEffect(() => {
-
             onAuthStateChanged(auth, (user) => {
             if (user) {
                 const {uid, email, displayName} = user;
                 dispatch(addUser({uid : uid , Email : email, displayName: displayName}));
-                
             } else {
-                dispatch(removeUser);
+                dispatch(removeUser());
             }
             });
     },[])

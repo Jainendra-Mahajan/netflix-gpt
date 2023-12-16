@@ -9,5 +9,4 @@
 - FireBase setup
 - Authentication using firebase
 - Redux store for storing user data
-- 
 
