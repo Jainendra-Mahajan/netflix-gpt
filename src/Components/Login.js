@@ -3,13 +3,12 @@ import Header from "./Header";
 import { validateData } from "../utils/validate";
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth } from "../utils/firebase"
-import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { BG_IMAGE } from "../utils/constants";
 
 const Login = () => {
 
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [isSignIn, setIsSignIn] = useState(true);
     const [errorMessage , setErrorMessage] = useState(null);
@@ -48,8 +47,6 @@ const Login = () => {
                     uid : uid , 
                     Email : email, 
                     displayName: displayName}));
-
-                    navigate("/browse"); //If signUp is success navigate to browse
                   }).catch((error) => {
                     setErrorMessage(error.message)
                   });
@@ -69,8 +66,6 @@ const Login = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user);
-                navigate("/browse") //If signIn is success navigate to browse
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -86,12 +81,12 @@ const Login = () => {
             <Header />
             <div  className="absolute">
                 <img
-                src="https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_large.jpg" 
+                src= {BG_IMAGE} 
                 alt="BG Image" />
             </div>
 
             <form onSubmit={(e) => e.preventDefault()} 
-                className="absolute p-12 bg-black text-white w-3/12 my-36 mx-auto right-0 left-0  rounded-lg opacity-85">
+                className="absolute p-12 bg-black text-white w-3/12 my-36 mx-auto right-0 left-0  rounded-lg opacity-90">
                 <h1 className="text-3xl py-2">
                     {isSignIn ? "Sign In" : "Sign Up"}
                 </h1>
