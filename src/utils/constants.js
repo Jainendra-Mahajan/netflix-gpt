@@ -3,10 +3,11 @@ export const USER_LOGO = "https://i.pinimg.com/564x/5b/50/e7/5b50e75d07c726d36f3
 export const BG_IMAGE = "https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_large.jpg";
 
 export const API_OPTIONS = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlN2E2MTczOWE3NTBjNjA0YjhjN2I3ODYxYjAwMzY2ZSIsInN1YiI6IjY1N2VhMmM3MTI0YzhkMDc0OTM5MWU0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ou9TiroVIiNTFNVcgA6HLNGduMh6hPJ3oHUmznhkKH0'
-    }
-  };
-  
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlN2E2MTczOWE3NTBjNjA0YjhjN2I3ODYxYjAwMzY2ZSIsInN1YiI6IjY1N2VhMmM3MTI0YzhkMDc0OTM5MWU0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ou9TiroVIiNTFNVcgA6HLNGduMh6hPJ3oHUmznhkKH0'
+  }
+};
+
+export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
