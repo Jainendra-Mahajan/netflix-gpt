@@ -60,7 +60,7 @@ const Header = () => {
         </select>}
 
         <button onClick={hadleGptsearchClick}
-          className='px-3 bg-purple-700 text-white rounded-lg mr-6 mb-2'>
+          className='px-3 bg-purple-700 text-white rounded-lg m-2'>
           {gptValue ? "Home" : "Gpt Search"}
         </button>
         <img
