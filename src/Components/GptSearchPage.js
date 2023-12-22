@@ -48,12 +48,12 @@ const GptSearchPage = () => {
 
     const currentLanguage = useSelector(store => store.lang.currentLanguage);
     return (
-        <div className='pt-[10%] flex justify-center'>
-            <form className='w-1/2 bg-black grid grid-cols-12' onSubmit={(e) => e.preventDefault()}>
-                <input className='p-4 m-4 rounded-lg col-span-9'
+        <div className='pt-[40%] md:pt-[10%] flex justify-center'>
+            <form className='w-full md:w-1/2 bg-black grid grid-cols-12' onSubmit={(e) => e.preventDefault()}>
+                <input className='p-4 m-4 rounded-lg col-span-9 text-sm md:text-lg'
                     ref={searchText}
                     type="text" placeholder={lang[currentLanguage].gptSearchPlaceHolder} />
-                <button className='py-2 px-4 m-4 bg-red-600 text-white rounded-lg col-span-3'
+                <button className='py-2 px-4 m-4 md:mx-4 mx-2 bg-red-600 text-white rounded-lg col-span-3 text-sm md:text-lg'
                     onClick={handleGptSearchClick}>
                     {lang[currentLanguage].search}
                 </button>

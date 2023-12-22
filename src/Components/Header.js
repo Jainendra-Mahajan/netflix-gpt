@@ -47,12 +47,12 @@ const Header = () => {
   }
 
   return (
-    <div className='w-screen absolute px-8 py-2 bg-gradient-to-b from-black z-50 flex justify-between'>
-      <img className='w-48'
+    <div className='w-screen absolute px-8 py-2 bg-gradient-to-b from-black z-50 flex flex-col md:flex-row justify-between'>
+      <img className='w-48 mx-auto md:mx-0'
         src={LOGO}
         alt="logo" />
 
-      {user && <div className='flex p-4'>
+      {user && <div className='flex p-4 justify-between'>
 
         {gptValue && <select onChange={handleLanguageChange}
           className='p-2 m-2 bg-gray-900 text-white rounded-lg'>
@@ -64,7 +64,7 @@ const Header = () => {
           {gptValue ? "Home" : "Gpt Search"}
         </button>
         <img
-          className='w-10 h-10'
+          className='hidden md:block w-10 h-10'
           src={USER_LOGO} alt="User Icon" />
 
         <button onClick={handleSignOut} className='font-bold text-white pl-5 pb-2'>(Sign Out)</button>
