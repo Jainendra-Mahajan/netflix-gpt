@@ -80,7 +80,7 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div >
             <Header />
             <div className="absolute">
                 <img className="h-screen w-screen object-cover"
@@ -117,14 +117,15 @@ const Login = () => {
 
                 <p className="text-sm font-bold text-red-600">{errorMessage}</p>
 
-                <p className="py-2 text-sm cursor-pointer" onClick={handleSignInToggle}>
+                <p className="py-1 text-sm cursor-pointer" onClick={handleSignInToggle}>
                     {isSignIn ? "New to Netflix? Sign Up Now!" :
                         "Already registered? Sign In Now."}
                 </p>
 
-            </form>
 
-        </div>
+
+            </form>
+        </div >
     )
 };
 
