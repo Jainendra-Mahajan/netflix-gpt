@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from "../utils/firebase"
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { BG_IMAGE } from "../utils/constants";
+import { BG_IMAGE, TEST_USER_EMAIL, TEST_USER_PASSWORD } from "../utils/constants";
 
 const Login = () => {
 
@@ -15,6 +15,8 @@ const Login = () => {
     const email = useRef();
     const password = useRef();
     const name = useRef();
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
 
     const handleSignInToggle = () => {
         setIsSignIn(!isSignIn);
@@ -79,6 +81,10 @@ const Login = () => {
 
     }
 
+    const handleTestUserButtonClick = () => {
+        setLoginEmail(TEST_USER_EMAIL);
+        setLoginPassword(TEST_USER_PASSWORD);
+    }
     return (
         <div >
             <Header />
@@ -103,13 +109,17 @@ const Login = () => {
                     ref={email}
                     className="my-3 p-2 w-full rounded-sm bg-gray-900"
                     type="email"
-                    placeholder="Email or phone number" />
+                    placeholder="Email or phone number"
+                    value={loginEmail}
+                    onChange={(e) => setLoginEmail(e.target.value)} />
 
                 <input
                     ref={password}
                     className="my-3 p-2 w-full rounded-sm bg-gray-900"
                     type="password"
-                    placeholder="Password" />
+                    placeholder="Password"
+                    value={loginPassword}
+                    onChange={(e) => setLoginPassword(e.target.value)} />
 
                 <button className="bg-red-600 p-2 w-full my-6 rounded-sm" onClick={handleButtonClick}>
                     {isSignIn ? "Login" : "Sign Up"}
@@ -122,7 +132,11 @@ const Login = () => {
                         "Already registered? Sign In Now."}
                 </p>
 
+                <p className="py-1 text-sm">OR</p>
 
+                <button className="bg-red-600 p-2 w-full my-4 rounded-sm" onClick={handleTestUserButtonClick}>
+                    Test User Credentials
+                </button>
 
             </form>
         </div >
