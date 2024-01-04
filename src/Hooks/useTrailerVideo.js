@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from '../utils/constants'
-import { addTrailer } from "../utils/moviesSlice";
+import { addCardTrailer, addTrailer } from "../utils/moviesSlice";
 import { useEffect } from "react";
 
-const useTrailerVideo = (id) => {
+const useTrailerVideo = (id, card) => {
     const trailerVideo = useSelector(store => store.movie.trailer);
     const dispatch = useDispatch();
     const getMovieVideo = async () => {
@@ -12,7 +12,9 @@ const useTrailerVideo = (id) => {
 
         const filterData = json.results.filter((video) => video?.type === "Trailer");
         const trailer = filterData.length ? filterData[0] : json.results[0];
-        dispatch(addTrailer(trailer));
+
+        !card && dispatch(addTrailer(trailer));
+
     }
     useEffect(() => {
         !trailerVideo && getMovieVideo();

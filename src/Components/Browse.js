@@ -21,6 +21,7 @@ const Browse = () => {
   return (
     <div>
       <Header />
+      {/* if watch value the show watch page or below value */}
       {gptValue ? <GptSearch /> :
         <>
           <PrimaryContainer />

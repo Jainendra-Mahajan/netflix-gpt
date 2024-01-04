@@ -6,7 +6,7 @@ export const API_OPTIONS = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer ' + process.env.REACT_APP_TMDB_KEY,
+    Authorization: 'Bearer ' + "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlN2E2MTczOWE3NTBjNjA0YjhjN2I3ODYxYjAwMzY2ZSIsInN1YiI6IjY1N2VhMmM3MTI0YzhkMDc0OTM5MWU0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ou9TiroVIiNTFNVcgA6HLNGduMh6hPJ3oHUmznhkKH0",
   }
 };
 
@@ -15,7 +15,7 @@ export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 export const SUPPORTED_LANGUAGES = [{ identifier: "en", name: "English" },
 { identifier: "hindi", name: "Hindi" }, { identifier: "spanish", name: "Spanish" }]
 
-export const GPT_KEY = process.env.REACT_APP_GPT_KEY
+export const GPT_KEY = "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"
 
 export const TEST_USER_EMAIL = "testuser001@netflix.com"
 export const TEST_USER_PASSWORD = "Test@1234"
