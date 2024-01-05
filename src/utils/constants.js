@@ -15,7 +15,7 @@ export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 export const SUPPORTED_LANGUAGES = [{ identifier: "en", name: "English" },
 { identifier: "hindi", name: "Hindi" }, { identifier: "spanish", name: "Spanish" }]
 
-export const GPT_KEY = "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"
+export const GPT_KEY = "Put Your API KEY"
 
 export const TEST_USER_EMAIL = "testuser001@netflix.com"
 export const TEST_USER_PASSWORD = "Test@1234"

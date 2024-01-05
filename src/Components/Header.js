@@ -52,8 +52,6 @@ const Header = () => {
         src={LOGO}
         alt="logo" />
 
-
-
       {user && <div className='flex p-4 justify-between'>
 
         <button onClick={hadleGptsearchClick}
